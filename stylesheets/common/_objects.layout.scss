@@ -1,0 +1,31 @@
+.l-bread {
+  max-width: $breakpoint-pc;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.l-section-inner {
+  padding: vw(40) vw(18);
+  @include min-screen($breakpoint-mobile) {
+    max-width: $breakpoint-pc;
+    padding: 65px 10%;
+    margin: 0 auto;
+  }
+  @include min-screen($breakpoint-pc) {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+}
+
+.l-site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: $header-height;
+  @include min-screen($breakpoint-pc) {
+    padding-top: 0;
+  }
+}
+.l-site-content {
+  flex: 1;
+}

@@ -1,0 +1,301 @@
+.test {
+  z-index: 1;
+  width: 100px;
+  height: 200px;
+  margin: 10px;
+  color: black;
+}
+
+.c-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: rgb(236, 236, 236);
+  @include min-screen($breakpoint-pc) {
+    position: static;
+    .inner {
+      width: $breakpoint-pc;
+      margin: 0 auto;
+    }
+  }
+  .header-top {
+    position: relative;
+    display: flex;
+    height: $header-height;
+    padding: 10px 15px;
+    .logo {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      a {
+        display: flex;
+        align-items: center;
+      }
+      img {
+        height: 45px;
+        margin-right: 15px;
+      }
+      @include min-screen($breakpoint-pc) {
+        width: 200px;
+      }
+    }
+  }
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    display: block;
+    width: 45px;
+    height: 45px;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    // background-image: url("#{$common-img-dir}hamburger.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 30px auto;
+    transform: translateY(-50%);
+    @include min-screen($breakpoint-pc) {
+      display: none;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    &.js-active {
+      // background-image: url("#{$common-img-dir}close.svg");
+      background-size: 22px 22px;
+    }
+  }
+  @include min-screen($breakpoint-pc) {
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .nav-pc {
+    display: none;
+    @include min-screen($breakpoint-pc) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: auto;
+    }
+  }
+  @include min-screen($breakpoint-pc) {
+    .nav-pc-list {
+      display: flex;
+      .item + .item {
+        margin-left: 15px;
+      }
+    }
+  }
+  .header-nav {
+    position: fixed;
+    top: 80px;
+    bottom: 0;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    overflow-y: scroll;
+    background-color: rgba(255, 255, 255, 0.9);
+    &.is-visible {
+      display: block;
+    }
+    @include min-screen($breakpoint-pc) {
+      position: static;
+      width: 1000px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .list-main-sp {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      max-width: vw(375);
+      padding: vw(10) vw(40) vw(20);
+      margin: 0 auto;
+      @include min-screen($breakpoint-pc) {
+        display: none;
+      }
+    }
+  }
+}
+
+.c-toggle-content {
+  .js-toggle-content {
+    display: none;
+    &.is-visible {
+      display: block;
+    }
+  }
+  .js-toggle-btn {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.c-bread {
+  display: flex;
+  li:nth-child(n + 2) {
+    position: relative;
+    padding-left: 10px;
+    margin-left: 5px;
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      content: ">";
+    }
+  }
+}
+
+.c-tab {
+  [aria-hidden="true"] {
+    display: none;
+  }
+
+  [aria-hidden="false"] {
+    display: block;
+  }
+
+  [aria-selected="true"] {
+    color: white;
+    background-color: royalblue;
+  }
+  .tab-list {
+    display: flex;
+    justify-content: center;
+    .item {
+      width: 25%;
+      &:last-child button {
+        border-right: 1px solid #ccc;
+      }
+      button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+      }
+    }
+  }
+  .tab-content {
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+}
+
+.c-footer {
+  padding: vw(100) vw(18);
+  background-color: rgb(236, 236, 236);
+  @include min-screen($breakpoint-pc) {
+    padding: 40px;
+    .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.c-top-btn {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 90;
+  display: block;
+  width: 40px;
+  @include min-screen($breakpoint-pc) {
+    right: calc(((100% - #{$breakpoint-pc}) / 2) - 40px);
+  }
+}
+
+.c-lazy-photo {
+  position: relative;
+  width: 100%;
+  height: 0;
+
+  /* padding-topを個別に指定する */
+  .lazy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+
+// https://codepen.io/nabe_kurage/pen/VQxvMp
+.c-block-animation {
+  position: relative;
+  display: inline-block;
+  padding: 15px 5px;
+  overflow: hidden;
+  &.is-inview::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    content: "";
+    background-color: #f9ce00;
+    animation: secondaryImageOverlayIn 0.6s 0s cubic-bezier(0.77, 0, 0.175, 1),
+      secondaryImageOverlayOut 0.6s 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    animation-fill-mode: both;
+  }
+  &.is-inview p {
+    margin: 0.05em;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+    animation: fadeIn 0.1s 0.5s;
+    animation-fill-mode: both;
+  }
+  p {
+    opacity: 0;
+  }
+
+  /* keyframesの設定 */
+
+  /* 文字が消えている状態から現れるアニメーション */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* はじめにブロックを伸ばすアニメーション */
+  @keyframes secondaryImageOverlayIn {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  /* のび太ブロックを横に追いやるアニメーション */
+  @keyframes secondaryImageOverlayOut {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(102%);
+    }
+  }
+}
