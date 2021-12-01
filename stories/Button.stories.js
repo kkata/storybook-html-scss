@@ -1,43 +1,70 @@
-import { createButton } from './Button';
+import { createButton } from "./Button";
+
+/**
+ * 長ーい説明長ーい説明長ーい説明長ーい説明長ーい説明
+ *     長ーい説明長ーい説明長ーい説明長ーい説明長ーい説明長ーい説明
+ */
 
 export default {
-  title: 'Example/Button',
+  title: "Example/Button",
   argTypes: {
-    label: { control: 'text' },
-    primary: { control: 'boolean' },
-    backgroundColor: { control: 'color' },
-    size: {
-      control: { type: 'select', options: ['small', 'medium', 'large'] },
+    label: {
+      description: "`label` の `description`",
+      table: { defaultValue: { summary: "Button" } },
+      control: "text",
     },
-    onClick: { action: 'onClick' },
+    primary: { control: "boolean" },
+    backgroundColor: { control: "color" },
+    size: {
+      control: { type: "select", options: ["small", "medium", "large"] },
+    },
+    onClick: { action: "onClick" },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: "Buttonの説明文",
+        story: "`storyDescription` のデフォルト値",
+      },
+    },
   },
 };
 
 const Template = ({ label, ...args }) => {
-  // You can either use a function to create DOM elements or use a plain html string!
-  // return `<div>${label}</div>`;
   return createButton({ label, ...args });
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
-  label: 'Button',
+  label: "Button",
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  label: 'Button',
+  label: "Secondary Button ",
+};
+Secondary.story = {
+  parameters: {
+    docs: {
+      source: {
+        code: "Some custom string here",
+      },
+      description: {
+        story: "`Secondary` の `storyDescription` です",
+      },
+    },
+  },
 };
 
 export const Large = Template.bind({});
 Large.args = {
-  size: 'large',
-  label: 'Button',
+  size: "large",
+  label: "Large Button",
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  size: 'small',
-  label: 'Button',
+  size: "small",
+  label: "Small Button",
 };

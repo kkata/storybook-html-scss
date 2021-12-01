@@ -1,3 +1,5 @@
+import "../stylesheets/common.scss";
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -7,5 +9,3 @@ export const parameters = {
     },
   },
 };
-
-import "../stylesheets/common.scss";
